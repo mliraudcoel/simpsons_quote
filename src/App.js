@@ -13,6 +13,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    // Get quotes for server
     this.getQuotes();
   }
 
