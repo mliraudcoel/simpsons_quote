@@ -7,25 +7,32 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      card: [],
+      card: null,
     }
     this.getQuotes = this.getQuotes.bind(this);
+  }
+
+  componentDidMount() {
+    this.getQuotes();
   }
 
   getQuotes() {
     axios.get('https://quests.wilders.dev/simpsons-quotes/quotes')
       .then(response => response.data)
       .then(data => 
-        // this.setState({card: data}),
         this.setState({card: data[0]})
       )}
 
+ 
   render() {
-    console.log(this.state.card)
     return (
       <div className="App">
-        <button onClick = {this.getQuotes}>Get a quote</button>
+        {this.state.card ? (
         <Quotes card= {this.state.card} />
+        ) : (
+          <p>Loading</p>
+        )}
+        <button onClick = {this.getQuotes}>Get a quote</button>
       </div>
     );
   }
