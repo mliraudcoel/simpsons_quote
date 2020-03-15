@@ -1,16 +1,21 @@
 import React from 'react';
 
 import Navbar from './Components/Navbar';
-import QuoteCard from './Components/QuoteCard';
+import QuoteList from './Components/QuoteList';
+import QuoteForm from './Components/QuoteForm';
 
 
 function App() {
   return (
     <div className="App">
       <Navbar />
-      <QuoteCard />
+      <QuoteForm />
+      <QuoteList />
     </div>
   );
 }
 
+
 export default App;
+
+

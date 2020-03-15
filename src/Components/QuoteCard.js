@@ -2,20 +2,38 @@ import React from 'react';
 
 import './QuoteCard.css';
 
-const QuoteCard = () => {
+
+
+class QuoteCard extends React.Component {
+  constructor(props){
+  super(props);
+  this.state = {
+    favorite: false
+  };
+}
+  render() {
     return (
-        <figure class="QuoteCard">
-        <img
-          src="https://cdn.glitch.com/3c3ffadc-3406-4440-bb95-d40ec8fcde72%2FNelsonMuntz.png?1497567511185"
-          alt="Nelson Muntz"/>
-        <figcaption>
-          <blockquote>
-            Shoplifting is a victimless crime, like punching someone in the dark.
-          </blockquote>
-          <cite>Nelson Muntz</cite>
-        </figcaption>
-      </figure>
-    )
-};
+      <figure className="QuoteCard">
+      <img src = {this.props.image} alt={this.props.character}/>
+      <figcaption>
+        <blockquote>
+          {this.props.quote}
+        </blockquote>
+        <p>
+        <cite>{this.props.character}</cite>
+        <span onClick = {event => {
+          const newFavorite = !this.state.favorite;
+          this.setState({ favorite : newFavorite });
+        }} className ={this.state.favorite? 'is-favorite' : ''}>&#9733;</span>
+        </p>
+      </figcaption>
+    </figure>
+  );
+  }
+}
+
 
 export default QuoteCard;
+
+
+
